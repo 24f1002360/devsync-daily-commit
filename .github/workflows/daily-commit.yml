@@ -1,4 +1,6 @@
 name: Daily Auto Commit
+permissions:
+  contents: write
 
 on:
   schedule:
@@ -20,7 +22,7 @@ jobs:
 
       - name: 24f1002360@ds.study.iitm.ac.in - Create daily commit
         run: |
-          echo "Last updated on $(date)" >> daily-log.txt
+          echo "Last updated on $(date)" > daily-log.txt
           git add daily-log.txt
-          git commit -m "Automated daily commit - $(date)" || echo "No changes"
-          git push
+          git commit -m "Automated daily commit - $(date)"
+          git push origin main
